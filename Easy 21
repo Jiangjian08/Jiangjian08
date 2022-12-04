@@ -1,0 +1,15 @@
+class Easy21():
+    
+    def __init__(self):
+        """
+        Init the first state by picking a random card for the dealer and player  
+        """
+        dealer_score, _ = self.draw_card()
+        player_score, _ = self.draw_card()
+        self.state = {"dealer_score": dealer_score, "player_score": player_score} # initial state
+        self.actions = ("hit", "stick")
+               
+        init_state = self.state.copy() # game history, recording (state, reward) and action of each step
+        self.history = [init_state]
+        
+    def step(self, state, action):
